@@ -42,3 +42,50 @@ Permite almacenar `ItemStack` apilables en un número fijo de ranuras y emite un
 - Sin la autoload `ItemDatabase`, `Inventory` registrará un error y no podrá reconstruir ítems al cargar partidas.
 - `ItemStack.is_full()` usa `item.max_stack`; ajusta ese campo en cada `ItemData` para controlar el límite.
 - Usa la señal `inventory_updated` para refrescar la UI o reproducir sonidos cuando se añadan o retiren objetos.
+
+---
+
+# Inventory system (English)
+
+Allows storing stackable `ItemStack` instances in a fixed number of slots and emits a signal when the contents change.
+
+## Components
+- **ItemData.gd** (`Resource`): defines a single item (ID, name, icon, description, and maximum stack size).
+- **ItemStack.gd** (`Resource`): represents a stack of an `ItemData` with amount and utilities (`is_full`, `add`, `remove`).
+- **ItemDatabase.gd** (`Node`): registry of items, intended as an autoload.
+- **Inventory.gd** (`Node`): manages slots and interaction with the database.
+
+## Godot setup
+1. **Create ItemDatabase autoload**
+   - In *Project > Autoloads*, add `Systems/Inventory/ItemDataBase.gd` with the name `ItemDatabase`.
+   - Register items in the database's `ready()` or through an external loader (for example, using `StaticDataParser` to read JSON and then create `ItemData`).
+2. **Instantiate Inventory**
+   - Add an `Inventory` node to your scene (e.g., as a child of the player or a UI manager).
+   - Adjust `max_slots` to the desired capacity.
+3. **Connect the signal**
+   - Connect `inventory_updated(slots)` to the UI or logic that should react to changes.
+
+## Common usage
+- **Add items**
+  ```gdscript
+  var sword: ItemData = ItemDatabase.get_item("sword")
+  $Inventory.add_item(sword, 3)
+  ```
+  The system will try to fill existing stacks of the same item and then create new slots if there is space. If the inventory is full, it will warn you.
+
+- **Get serializable data**
+  ```gdscript
+  var data: Array[Dictionary] = $Inventory.get_inventory_data()
+  # Useful for saving into SaveData.saved_inventory
+  ```
+
+- **Load from persisted data**
+  ```gdscript
+  $Inventory.load_inventory(save.saved_inventory)
+  ```
+  The method resets slots, validates the database, and adds each entry with `add_item` to respect stacking logic.
+
+## Integration tips
+- Without the `ItemDatabase` autoload, `Inventory` will log an error and cannot rebuild items when loading saves.
+- `ItemStack.is_full()` uses `item.max_stack`; adjust that field in each `ItemData` to control the limit.
+- Use the `inventory_updated` signal to refresh UI or play sounds when items are added or removed.
