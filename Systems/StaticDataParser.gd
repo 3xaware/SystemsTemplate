@@ -1,5 +1,5 @@
 extends Node
-class_name StaticDataExtractor
+class_name StaticDataParser
 
 var itemData: Dictionary = {}
 

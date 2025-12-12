@@ -17,9 +17,9 @@ Implementa un flujo simple de estados para nodos, con transición explícita por
    - Asigna `initial_state` desde el Inspector al nodo de estado inicial.
 2. **Inicialización**
    - Llama a `StateMachine.init(parent_node)` desde el nodo que posee la máquina (por ejemplo, en `_ready()` del jugador). Esto:
-     - Asigna `parent` a cada estado.
-     - Conecta la señal `state_transition` de cada estado a `change_state`.
-     - Ejecuta `Enter()` del `initial_state`.
+	 - Asigna `parent` a cada estado.
+	 - Conecta la señal `state_transition` de cada estado a `change_state`.
+	 - Ejecuta `Enter()` del `initial_state`.
 
 ## Uso durante el juego
 - `StateMachine` reenvía `_input`, `_process` y `_physics_process` al estado activo para que concentres la lógica allí.
@@ -27,8 +27,8 @@ Implementa un flujo simple de estados para nodos, con transición explícita por
   ```gdscript
   # Dentro de un estado hijo
   func Update(delta):
-      if should_jump():
-          state_transition.emit(self, "jump")
+	  if should_jump():
+		  state_transition.emit(self, "jump")
   ```
   El nombre debe coincidir con el nodo del estado destino (sin distinción de mayúsculas/minúsculas).
 

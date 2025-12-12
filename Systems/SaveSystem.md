@@ -5,7 +5,7 @@ El `SaveSystem.gd` es un nodo utilitario que centraliza la carga/creación, guar
 ## Estructura
 - **SaveData.gd**: Recurso con los campos persistentes. Incluye el arreglo `saved_inventory` y puedes añadir cualquier otro dato que quieras conservar.
 - **SaveSystem.gd**: Nodo que opera sobre un `SaveData` activo (`current_save_data`) y un número de ranura (`current_slot`).
-- **StaticDataParser.gd** (`StaticDataExtractor`): Nodo auxiliar para cargar diccionarios desde JSON cuando necesites poblar datos estáticos (por ejemplo, ítems o configuraciones) antes de guardar/cargar.
+- **StaticDataParser.gd**: Nodo auxiliar para cargar diccionarios desde JSON cuando necesites poblar datos estáticos (por ejemplo, ítems o configuraciones) antes de guardar/cargar.
 
 ## Configuración rápida
 1. **Añade el nodo** `SaveSystem` a un autoload o a la escena raíz para tenerlo disponible en todo momento.
@@ -41,7 +41,7 @@ El `SaveSystem.gd` es un nodo utilitario que centraliza la carga/creación, guar
 
 ## Integración con otros sistemas
 - **Inventario**: usa `Inventory.get_inventory_data()` para almacenar los ítems en `SaveData.saved_inventory` y luego `Inventory.load_inventory(save.saved_inventory)` al cargar la partida.
-- **Datos estáticos**: con `StaticDataExtractor.load_json_file(ruta)` puedes precargar definiciones (por ejemplo, ítems) antes de reconstruir el estado dinámico al cargar.
+- **Datos estáticos**: con `StaticDataParser.load_json_file(ruta)` puedes precargar definiciones (por ejemplo, ítems) antes de reconstruir el estado dinámico al cargar.
 
 ## Prácticas recomendadas
 - Llama a `load_save()` al iniciar el juego o al seleccionar la ranura en el menú principal.

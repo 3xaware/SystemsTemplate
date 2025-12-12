@@ -17,11 +17,11 @@ Permite gestionar acciones contextuales con objetos cercanos mediante áreas de 
 2. **Objetos interactuables**
    - Instancia nodos `Interactable` en el mundo y ajusta `interact_name` e `is_interactable`.
    - Asigna el `Callable interact` en tiempo de ejecución o en `_ready()` del propio nodo:
-     ```gdscript
-     func _ready():
-         interact = func():
-             open_chest()
-     ```
+	 ```gdscript
+	 func _ready():
+		 interact = func():
+			 open_chest()
+	 ```
 
 ## Flujo de interacción
 - El componente mantiene una lista `current_interactions` con las áreas en rango.
