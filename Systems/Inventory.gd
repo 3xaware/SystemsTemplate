@@ -14,15 +14,15 @@ func _init(max_slots: int = 28):
 		slots[i] = null
 
 func add_item(item_data: Dictionary) -> void:
-	var item_id: String = item_data.get("item_id", "")
-	var max_stack: int = item_data.get("max_stack", 1)
+        var item_id: String = item_data.get("item_id", "")
+        var max_stack: int = item_data.get("max_stack", 1)
 
-	for i in range(max_slots):
-		var slot = slots[i]
-		if slot and slot.item_id == item_id and slot.quantity < max_stack:
-			slot.quantity += 1
-			emit_signal("inventory_updated", slots)
-			return
+        for i in range(max_slots):
+                var slot = slots[i]
+                if slot and slot["item_id"] == item_id and slot["quantity"] < max_stack:
+                        slot["quantity"] += 1
+                        emit_signal("inventory_updated", slots)
+                        return
 
 	for i in range(max_slots):
 		if slots[i] == null:
