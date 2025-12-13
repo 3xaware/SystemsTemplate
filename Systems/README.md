@@ -9,6 +9,7 @@ Este directorio contiene plantillas reutilizables para sistemas habituales en Go
 - **StateMachine / State**: Máquina de estados jerárquica simple para nodos. Ver [StateMachine.md](StateMachine.md).
 - **SceneManager**: Cambio de escenas con transiciones opcionales y bloqueo de entrada. Ver [SceneManager/README.md](SceneManager/README.md).
 - **GameFlow**: Autoload que centraliza el estado global del juego y notifica cambios con la señal `state_changed`. Ver [GameFlow.md](GameFlow.md).
+- **EventBus**: Autoload para comunicación desacoplada mediante señales compartidas entre sistemas. Ver [EventBus.md](EventBus.md).
 
 ---
 
@@ -23,3 +24,4 @@ This directory includes reusable templates for common Godot systems. Each bullet
 - **StateMachine / State**: Simple hierarchical state machine for nodes. See [StateMachine.md](StateMachine.md).
 - **SceneManager**: Scene swapping with optional transitions and input blocking. See [SceneManager/README.md](SceneManager/README.md).
 - **GameFlow**: Autoload that centralizes the global game state and notifies changes through the `state_changed` signal. See [GameFlow.md](GameFlow.md).
+- **EventBus**: Autoload for decoupled communication through shared signals between systems. See [EventBus.md](EventBus.md).

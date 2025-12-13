@@ -5,7 +5,6 @@
 ## Cómo funciona
 - Al iniciarse, fija el estado en `BOOT` y se conecta al `EventBus`.
 - Cuando `EventBus.save_loaded` se emite, pasa a `LOADING` mientras se reconstruye la partida.
-- Cuando `EventBus.scene_loaded` se emite, pasa a `GAMEPLAY`, asumiendo que la escena jugable está lista.
 - El método público `set_state()` permite forzar otros estados (por ejemplo, `MAIN_MENU` o `PAUSED`).
 
 ## API rápida
@@ -19,7 +18,7 @@
   - Consultas frecuentes para decidir si se permiten entradas o se debe mostrar la UI de pausa.
 
 ## Integración con otros sistemas y el juego
-- **SceneManager**: tras cargar una escena jugable, emite `EventBus.scene_loaded` y `GameFlow` pasa a `GAMEPLAY` automáticamente.
+- **SceneManager**: tras cargar una escena, decide el estado que corresponda (por ejemplo, `MAIN_MENU` para menús o `GAMEPLAY` para niveles) y lo fija con `GameFlow.set_state`.
 - **SaveSystem**: al terminar de cargar una ranura se emite `EventBus.save_loaded` y `GameFlow` marca `LOADING` hasta que la escena notifique que está lista.
 - **UI/Controles**: escucha `state_changed` para mostrar el menú principal (`MAIN_MENU`), bloquear inputs durante `LOADING` o desplegar la pantalla de pausa (`PAUSED`).
 - **Lógica de juego**: otros nodos pueden consultar `GameFlow.is_gameplay()` antes de procesar físicas o spawns.
@@ -57,7 +56,6 @@
 ## How it works
 - On startup it sets the state to `BOOT` and connects to `EventBus`.
 - When `EventBus.save_loaded` fires, it switches to `LOADING` while the save is being reconstructed.
-- When `EventBus.scene_loaded` fires, it switches to `GAMEPLAY`, assuming the playable scene is ready.
 - The public `set_state()` method lets you force other states (for example `MAIN_MENU` or `PAUSED`).
 
 ## Quick API
@@ -71,7 +69,7 @@
   - Common queries to decide if input should be allowed or the pause UI should be shown.
 
 ## Integration with other systems and the game
-- **SceneManager**: after loading a gameplay scene it emits `EventBus.scene_loaded` and `GameFlow` switches to `GAMEPLAY` automatically.
+- **SceneManager**: after loading a scene, decide the appropriate state (for example `MAIN_MENU` for menus or `GAMEPLAY` for levels) and set it via `GameFlow.set_state`.
 - **SaveSystem**: once a slot finishes loading, `EventBus.save_loaded` is emitted and `GameFlow` marks `LOADING` until the scene reports readiness.
 - **UI/Controls**: listen to `state_changed` to show the main menu (`MAIN_MENU`), block input during `LOADING`, or display the pause screen (`PAUSED`).
 - **Game logic**: other nodes can call `GameFlow.is_gameplay()` before running physics or spawning entities.
