@@ -5,7 +5,6 @@
 ## Cómo funciona
 - Al iniciarse, fija el estado en `BOOT` y se conecta al `EventBus`.
 - Cuando `EventBus.save_loaded` se emite, pasa a `LOADING` mientras se reconstruye la partida.
-- **No** cambia automáticamente a `GAMEPLAY` al cargar una escena; cada escena debe fijar su estado apropiado (menú, cinemática, etc.).
 - El método público `set_state()` permite forzar otros estados (por ejemplo, `MAIN_MENU` o `PAUSED`).
 
 ## API rápida
@@ -57,7 +56,6 @@
 ## How it works
 - On startup it sets the state to `BOOT` and connects to `EventBus`.
 - When `EventBus.save_loaded` fires, it switches to `LOADING` while the save is being reconstructed.
-- It **does not** auto-switch to `GAMEPLAY` on every scene load; each scene should set the proper state (menus, cinematics, gameplay, etc.).
 - The public `set_state()` method lets you force other states (for example `MAIN_MENU` or `PAUSED`).
 
 ## Quick API
