@@ -20,6 +20,7 @@ ItemDataBase="*res://Systems/Inventory/ItemDataBase.gd"
 InputBlocker="*res://Systems/SceneManager/InputBlocker.gd"
 EventBus="*res://Systems/EventBus.gd"
 GameFlow="*res://Systems/GameFlow.gd"
+SaveSystem="*res://Systems/SaveSystem.gd"
 
 [rendering]
 

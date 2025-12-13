@@ -1,5 +1,4 @@
 extends Node
-class_name SaveSystem
 
 var current_save_data: SaveData = null
 var current_slot: int = -1
