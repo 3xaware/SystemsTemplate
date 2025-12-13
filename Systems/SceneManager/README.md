@@ -18,28 +18,28 @@ Sistema para cargar y cambiar escenas de Godot con soporte opcional para transic
 
 ## Uso
 - **Cambio básico sin transición**
-  ```gdscript
-  $SceneManager.change_scene("res://Scenes/Menu.tscn")
-  ```
+```gdscript
+$SceneManager.change_scene("res://Scenes/Menu.tscn")
+```
 - **Cambio con fundido y fondo personalizado**
-  ```gdscript
-  var bg: Texture2D = load("res://UI/FadeTexture.png")
-  $SceneManager.change_scene(
-		  "res://Scenes/Level1.tscn",
-		  use_transition = true,
-		  fade_out_time = 0.6,
-		  fade_in_time = 0.4,
-		  custom_background = bg
-  )
-  ```
+```gdscript
+var bg: Texture2D = load("res://UI/FadeTexture.png")
+$SceneManager.change_scene(
+	"res://Scenes/Level1.tscn",
+	use_transition = true,
+	fade_out_time = 0.6,
+	fade_in_time = 0.4,
+	custom_background = bg
+)
+```
 - **Responder al evento de carga**
-  ```gdscript
-  func _ready():
-				  EventBus.scene_loaded.connect(_on_scene_loaded)
+```gdscript
+func _ready():
+	EventBus.scene_loaded.connect(_on_scene_loaded)
 
-  func _on_scene_loaded(scene: Node) -> void:
-		  print("Nueva escena lista: ", scene.name)
-  ```
+func _on_scene_loaded(scene: Node) -> void:
+	print("Nueva escena lista: ", scene.name)
+```
 
 ## Flujo interno
 1. Si se solicita transición y existe `SceneTransition`, se ejecuta `fade_out`, que muestra el `ColorRect`, bloquea la entrada y anima la opacidad hasta 1.
@@ -79,24 +79,24 @@ System to load and swap Godot scenes with optional fade transitions and input bl
   $SceneManager.change_scene("res://Scenes/Menu.tscn")
   ```
 - **Change with fade and custom background**
-  ```gdscript
-  var bg: Texture2D = load("res://UI/FadeTexture.png")
-  $SceneManager.change_scene(
-		  "res://Scenes/Level1.tscn",
-		  use_transition = true,
-		  fade_out_time = 0.6,
-		  fade_in_time = 0.4,
-		  custom_background = bg
-  )
-  ```
+```gdscript
+var bg: Texture2D = load("res://UI/FadeTexture.png")
+$SceneManager.change_scene(
+	"res://Scenes/Level1.tscn",
+	use_transition = true,
+	fade_out_time = 0.6,
+	fade_in_time = 0.4,
+	custom_background = bg
+)
+```
 - **React to the load event**
-  ```gdscript
-  func _ready():
-				  EventBus.scene_loaded.connect(_on_scene_loaded)
+```gdscript
+func _ready():
+	EventBus.scene_loaded.connect(_on_scene_loaded)
 
-  func _on_scene_loaded(scene: Node) -> void:
-		  print("New scene ready: ", scene.name)
-  ```
+func _on_scene_loaded(scene: Node) -> void:
+	print("New scene ready: ", scene.name)
+```
 
 ## Internal flow
 1. If transition is requested and `SceneTransition` exists, `fade_out` runs: it shows the `ColorRect`, blocks input, and animates opacity to 1.

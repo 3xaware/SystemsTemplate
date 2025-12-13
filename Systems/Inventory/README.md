@@ -10,7 +10,7 @@ Permite almacenar `ItemStack` apilables en un número fijo de ranuras y emite un
 
 ## Preparación en Godot
 1. **Crear autoload de ItemDataBase**
-   - En *Project > Autoloads*, agrega `Systems/Inventory/ItemDataBase.gd` con el nombre `ItemDataBase`.
+   - En *Project > Autoloads*, agrega `ItemDataBase.gd` con el nombre `ItemDataBase`.
    - Registra los ítems en `ready()` de la base de datos o desde un cargador externo (por ejemplo, usando `StaticDataParser` para leer un JSON y luego crear `ItemData`).
 2. **Instanciar Inventory**
    - Añade un nodo `Inventory` a tu escena (por ejemplo, como hijo del jugador o de un gestor de UI).
@@ -57,7 +57,7 @@ Allows storing stackable `ItemStack` instances in a fixed number of slots and em
 
 ## Godot setup
 1. **Create ItemDataBase autoload**
-   - In *Project > Autoloads*, add `Systems/Inventory/ItemDataBase.gd` with the name `ItemDataBase`.
+   - In *Project > Autoloads*, add `ItemDataBase.gd` with the name `ItemDataBase`.
    - Register items in the database's `ready()` or through an external loader (for example, using `StaticDataParser` to read JSON and then create `ItemData`).
 2. **Instantiate Inventory**
    - Add an `Inventory` node to your scene (e.g., as a child of the player or a UI manager).

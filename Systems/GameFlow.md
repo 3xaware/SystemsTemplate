@@ -24,28 +24,28 @@
 - **Lógica de juego**: otros nodos pueden consultar `GameFlow.is_gameplay()` antes de procesar físicas o spawns.
 
 ## Uso típico
-1. Marca `GameFlow` como autoload (ya configurado en `project.godot`).
+1. Marca `GameFlow` como autoload.
 2. En cada sistema que dependa del estado global, conéctate a la señal:
-   ```gdscript
-   GameFlow.state_changed.connect(_on_game_state_changed)
-   ```
+```gdscript
+GameFlow.state_changed.connect(_on_game_state_changed)
+```
 3. Ajusta UI o controles según el estado recibido:
-   ```gdscript
-   func _on_game_state_changed(previous: GameFlow.State, current: GameFlow.State) -> void:
-	   match current:
-		   GameFlow.State.MAIN_MENU:
-			   _show_main_menu()
-		   GameFlow.State.LOADING:
-			   _block_input()
-		   GameFlow.State.PAUSED:
-			   _show_pause_menu()
-		   GameFlow.State.GAMEPLAY:
-			   _resume_gameplay()
-   ```
+```gdscript
+func _on_game_state_changed(previous: GameFlow.State, current: GameFlow.State) -> void:
+	match current:
+		GameFlow.State.MAIN_MENU:
+			_show_main_menu()
+		GameFlow.State.LOADING:
+			_block_input()
+		GameFlow.State.PAUSED:
+			_show_pause_menu()
+		GameFlow.State.GAMEPLAY:
+			_resume_gameplay()
+```
 4. Si necesitas cambiar manualmente el flujo (por ejemplo, al abrir el menú principal):
-   ```gdscript
-   GameFlow.set_state(GameFlow.State.MAIN_MENU)
-   ```
+```gdscript
+GameFlow.set_state(GameFlow.State.MAIN_MENU)
+```
 
 ---
 
@@ -75,7 +75,7 @@
 - **Game logic**: other nodes can call `GameFlow.is_gameplay()` before running physics or spawning entities.
 
 ## Typical usage
-1. Keep `GameFlow` as an autoload (already configured in `project.godot`).
+1. Keep `GameFlow` as an autoload.
 2. In each system that depends on the global state, connect to the signal:
    ```gdscript
    GameFlow.state_changed.connect(_on_game_state_changed)
