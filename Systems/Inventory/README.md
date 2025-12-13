@@ -1,6 +1,6 @@
 # Sistema de inventario (Español)
 
-Permite almacenar `ItemStack` apilables en un número fijo de ranuras y emite una señal cuando cambia el contenido.
+Permite almacenar `ItemStack` apilables en un número fijo de ranuras y emite una señal global cuando cambia el contenido.
 
 ## Componentes
 - **ItemData.gd** (`Resource`): define un ítem individual (ID, nombre, icono, descripción y tamaño máximo de pila).
@@ -16,7 +16,7 @@ Permite almacenar `ItemStack` apilables en un número fijo de ranuras y emite un
    - Añade un nodo `Inventory` a tu escena (por ejemplo, como hijo del jugador o de un gestor de UI).
    - Ajusta `max_slots` según la capacidad deseada.
 3. **Conectar la señal**
-   - Conecta `inventory_updated(slots)` a la interfaz o lógica que deba reaccionar ante cambios.
+   - Conecta `EventBus.inventory_updated(slots)` a la interfaz o lógica que deba reaccionar ante cambios.
 
 ## Uso común
 - **Agregar ítems**
@@ -41,13 +41,13 @@ Permite almacenar `ItemStack` apilables en un número fijo de ranuras y emite un
 ## Consejos de integración
 - Sin la autoload `ItemDataBase`, `Inventory` registrará un error y no podrá reconstruir ítems al cargar partidas.
 - `ItemStack.is_full()` usa `item.max_stack`; ajusta ese campo en cada `ItemData` para controlar el límite.
-- Usa la señal `inventory_updated` para refrescar la UI o reproducir sonidos cuando se añadan o retiren objetos.
+- Usa la señal global `EventBus.inventory_updated` para refrescar la UI o reproducir sonidos cuando se añadan o retiren objetos.
 
 ---
 
 # Inventory system (English)
 
-Allows storing stackable `ItemStack` instances in a fixed number of slots and emits a signal when the contents change.
+Allows storing stackable `ItemStack` instances in a fixed number of slots and emits a global signal when the contents change.
 
 ## Components
 - **ItemData.gd** (`Resource`): defines a single item (ID, name, icon, description, and maximum stack size).
@@ -63,7 +63,7 @@ Allows storing stackable `ItemStack` instances in a fixed number of slots and em
    - Add an `Inventory` node to your scene (e.g., as a child of the player or a UI manager).
    - Adjust `max_slots` to the desired capacity.
 3. **Connect the signal**
-   - Connect `inventory_updated(slots)` to the UI or logic that should react to changes.
+   - Connect `EventBus.inventory_updated(slots)` to the UI or logic that should react to changes.
 
 ## Common usage
 - **Add items**
@@ -88,4 +88,4 @@ Allows storing stackable `ItemStack` instances in a fixed number of slots and em
 ## Integration tips
 - Without the `ItemDataBase` autoload, `Inventory` will log an error and cannot rebuild items when loading saves.
 - `ItemStack.is_full()` uses `item.max_stack`; adjust that field in each `ItemData` to control the limit.
-- Use the `inventory_updated` signal to refresh UI or play sounds when items are added or removed.
+- Use the global `EventBus.inventory_updated` signal to refresh UI or play sounds when items are added or removed.
