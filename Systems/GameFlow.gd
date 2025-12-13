@@ -14,7 +14,6 @@ var current_state: GameFlow.State = GameFlow.State.BOOT
 
 func _ready() -> void:
 	_set_state(GameFlow.State.BOOT)
-	EventBus.scene_loaded.connect(_on_scene_loaded)
 	EventBus.save_loaded.connect(_on_save_loaded)
 
 # ============================================================
@@ -40,13 +39,6 @@ func is_gameplay() -> bool:
 
 func is_paused() -> bool:
 	return current_state == GameFlow.State.PAUSED
-
-# ============================================================
-#  EVENT BUS REACTIONS
-# ============================================================
-
-func _on_scene_loaded(_scene: Node) -> void:
-	set_state(GameFlow.State.GAMEPLAY)
 
 func _on_save_loaded(_save_data: SaveData, _slot: int) -> void:
 	set_state(GameFlow.State.LOADING)
