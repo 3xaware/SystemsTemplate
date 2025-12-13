@@ -1,5 +1,5 @@
 extends Node
-class_name ItemDatabase
+class_name ItemDataBase
 
 var items: Dictionary[StringName, ItemData] = {}
 

@@ -6,8 +6,6 @@ signal inventory_updated(slots: Array[ItemStack])
 @export var max_slots: int = 28
 var slots: Array[ItemStack] = []
 
-var item_database: ItemDatabase
-
 func _ready() -> void:
 	_initialize_slots()
 	_load_database()
@@ -19,16 +17,12 @@ func _initialize_slots() -> void:
 	for i: int in range(max_slots):
 		slots[i] = null
 
-func _load_database() -> void:
-	if not Engine.has_singleton("ItemDatabase"):
-		push_error("Inventory ERROR: ItemDatabase autoload is missing! Add it in Project > Autoloads.")
-		return
-	
-	var db := Engine.get_singleton("ItemDatabase")
-	if db is ItemDatabase:
-		item_database = db
-	else:
-		push_error("Inventory ERROR: Autoload ItemDatabase exists but is not of type ItemDatabase.")
+func _load_database() -> bool:
+        if not Engine.has_singleton("ItemDataBase"):
+                push_error("Inventory ERROR: ItemDataBase autoload is missing! Add it in Project > Autoloads.")
+                return false
+
+        return true
 
 func add_item(item: ItemData, amount: int = 1) -> void:
 	for i: int in range(max_slots):
@@ -75,20 +69,19 @@ func get_inventory_data() -> Array[Dictionary]:
 	return data
 
 func load_inventory(data: Array[Dictionary]) -> void:
-	_initialize_slots()
-	
-	if item_database == null:
-		push_error("Inventory.load_inventory ERROR: No ItemDatabase available.")
-		return
+        _initialize_slots()
 
-	for entry: Dictionary in data:
-		var item_id: String = entry.get("item_id", "")
-		var amount: int = int(entry.get("quantity", 1))
+        if not _load_database():
+                return
 
-		var item: ItemData = item_database.get_item(item_id)
-		if item != null:
-			add_item(item, amount)
-		else:
-			push_warning("Inventory WARNING: Item ID '%s' not found in ItemDatabase." % item_id)
+        for entry: Dictionary in data:
+                var item_id: String = entry.get("item_id", "")
+                var amount: int = int(entry.get("quantity", 1))
 
-	emit_signal("inventory_updated", slots)
+                var item: ItemData = ItemDataBase.get_item(item_id)
+                if item != null:
+                        add_item(item, amount)
+                else:
+                        push_warning("Inventory WARNING: Item ID '%s' not found in ItemDataBase." % item_id)
+
+        emit_signal("inventory_updated", slots)
