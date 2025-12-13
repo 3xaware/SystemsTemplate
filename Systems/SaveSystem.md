@@ -66,20 +66,20 @@ El `SaveSystem.gd` es un nodo utilitario que centraliza la carga/creación, guar
 
 ## Usage flow
 - **Load or create a slot**
-  ```gdscript
-  $SaveSystem.load_save(0) # Loads slot 0, or creates a new one if it does not exist
-  var save: SaveData = $SaveSystem.current_save_data
-  ```
+```gdscript
+$SaveSystem.load_save(0) # Loads slot 0, or creates a new one if it does not exist
+var save: SaveData = $SaveSystem.current_save_data
+```
 - **Update data and save**
-  ```gdscript
-  save.player_position = player.global_position
-  save.saved_inventory = inventory.get_inventory_data()
-  $SaveSystem.save_current()
-  ```
+```gdscript
+save.player_position = player.global_position
+save.saved_inventory = inventory.get_inventory_data()
+$SaveSystem.save_current()
+```
 - **Delete a slot**
-  ```gdscript
-  $SaveSystem.delete_save(2)
-  ```
+```gdscript
+$SaveSystem.delete_save(2)
+```
 
 ## API details
 - `load_save(slot: int)`

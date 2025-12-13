@@ -24,12 +24,12 @@ Implementa un flujo simple de estados para nodos, con transición explícita por
 ## Uso durante el juego
 - `StateMachine` reenvía `_input`, `_process` y `_physics_process` al estado activo para que concentres la lógica allí.
 - Para cambiar de estado desde un estado concreto, emite la señal con el nombre del nuevo estado:
-  ```gdscript
-  # Dentro de un estado hijo
-	func Update(delta):
-		if should_jump():
-			state_transition.emit(self, "jump")
-  ```
+```gdscript
+# Dentro de un estado hijo
+func Update(delta):
+	if should_jump():
+		state_transition.emit(self, "jump")
+```
   El nombre debe coincidir con el nodo del estado destino (sin distinción de mayúsculas/minúsculas).
 
 ## Recomendaciones
@@ -65,12 +65,12 @@ Implements a simple state flow for nodes, with explicit transitions by name.
 ## In-game usage
 - `StateMachine` forwards `_input`, `_process`, and `_physics_process` to the active state so you keep logic there.
 - To switch states from a concrete state, emit the signal with the new state's name:
-  ```gdscript
-  # Inside a child state
-	func Update(delta):
-		if should_jump():
-			state_transition.emit(self, "jump")
-  ```
+```gdscript
+# Inside a child state
+func Update(delta):
+	if should_jump():
+		state_transition.emit(self, "jump")
+```
   The name must match the destination state's node name (case-insensitive).
 
 ## Recommendations

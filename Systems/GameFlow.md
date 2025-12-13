@@ -81,19 +81,19 @@
    GameFlow.state_changed.connect(_on_game_state_changed)
    ```
 3. Adjust UI or controls based on the received state:
-   ```gdscript
-   func _on_game_state_changed(previous: GameFlow.State, current: GameFlow.State) -> void:
-	   match current:
-		   GameFlow.State.MAIN_MENU:
-			   _show_main_menu()
-		   GameFlow.State.LOADING:
-			   _block_input()
-		   GameFlow.State.PAUSED:
-			   _show_pause_menu()
-		   GameFlow.State.GAMEPLAY:
-			   _resume_gameplay()
-   ```
+```gdscript
+func _on_game_state_changed(previous: GameFlow.State, current: GameFlow.State) -> void:
+	match current:
+		GameFlow.State.MAIN_MENU:
+			_show_main_menu()
+		GameFlow.State.LOADING:
+			_block_input()
+		GameFlow.State.PAUSED:
+			_show_pause_menu()
+		GameFlow.State.GAMEPLAY:
+			_resume_gameplay()
+```
 4. If you need to manually change the flow (for example when opening the main menu):
-   ```gdscript
-   GameFlow.set_state(GameFlow.State.MAIN_MENU)
-   ```
+```gdscript
+GameFlow.set_state(GameFlow.State.MAIN_MENU)
+```

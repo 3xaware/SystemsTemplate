@@ -20,22 +20,22 @@ Permite almacenar `ItemStack` apilables en un número fijo de ranuras y emite un
 
 ## Uso común
 - **Agregar ítems**
-  ```gdscript
-  var sword: ItemData = ItemDataBase.get_item("sword")
-  $Inventory.add_item(sword, 3)
-  ```
+```gdscript
+var sword: ItemData = ItemDataBase.get_item("sword")
+$Inventory.add_item(sword, 3)
+```
   El sistema intentará rellenar pilas existentes del mismo ítem y luego crear nuevas ranuras si hay espacio. Si el inventario está lleno, mostrará una advertencia.
 
 - **Obtener datos serializables**
-  ```gdscript
-  var data: Array[Dictionary] = $Inventory.get_inventory_data()
-  # Útil para guardado en SaveData.saved_inventory
-  ```
+```gdscript
+var data: Array[Dictionary] = $Inventory.get_inventory_data()
+# Útil para guardado en SaveData.saved_inventory
+```
 
 - **Cargar desde datos persistidos**
-  ```gdscript
-  $Inventory.load_inventory(save.saved_inventory)
-  ```
+```gdscript
+$Inventory.load_inventory(save.saved_inventory)
+```
   El método reinicia las ranuras, valida la base de datos y agrega cada entrada con `add_item` para respetar la lógica de apilado.
 
 ## Consejos de integración
@@ -67,22 +67,22 @@ Allows storing stackable `ItemStack` instances in a fixed number of slots and em
 
 ## Common usage
 - **Add items**
-  ```gdscript
-  var sword: ItemData = ItemDataBase.get_item("sword")
-  $Inventory.add_item(sword, 3)
-  ```
+```gdscript
+var sword: ItemData = ItemDataBase.get_item("sword")
+$Inventory.add_item(sword, 3)
+```
   The system will try to fill existing stacks of the same item and then create new slots if there is space. If the inventory is full, it will warn you.
 
 - **Get serializable data**
-  ```gdscript
-  var data: Array[Dictionary] = $Inventory.get_inventory_data()
-  # Useful for saving into SaveData.saved_inventory
-  ```
+```gdscript
+var data: Array[Dictionary] = $Inventory.get_inventory_data()
+# Useful for saving into SaveData.saved_inventory
+```
 
 - **Load from persisted data**
-  ```gdscript
-  $Inventory.load_inventory(save.saved_inventory)
-  ```
+```gdscript
+$Inventory.load_inventory(save.saved_inventory)
+```
   The method resets slots, validates the database, and adds each entry with `add_item` to respect stacking logic.
 
 ## Integration tips
