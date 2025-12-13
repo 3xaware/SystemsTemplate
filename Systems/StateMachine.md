@@ -27,8 +27,8 @@ Implementa un flujo simple de estados para nodos, con transición explícita por
   ```gdscript
   # Dentro de un estado hijo
   func Update(delta):
-          if should_jump():
-                  state_transition.emit(self, "jump")
+		  if should_jump():
+				  state_transition.emit(self, "jump")
   ```
   El nombre debe coincidir con el nodo del estado destino (sin distinción de mayúsculas/minúsculas).
 
@@ -59,8 +59,8 @@ Implements a simple state flow for nodes, with explicit transitions by name.
 2. **Initialization**
    - Call `StateMachine.init(parent_node)` from the node that owns the machine (for example, in the player's `_ready()`). This:
          - Assigns `parent` to every state.
-         - Connects each state's `state_transition` signal to `change_state`.
-         - Runs `Enter()` on the `initial_state`.
+		 - Connects each state's `state_transition` signal to `change_state`.
+		 - Runs `Enter()` on the `initial_state`.
 
 ## In-game usage
 - `StateMachine` forwards `_input`, `_process`, and `_physics_process` to the active state so you keep logic there.

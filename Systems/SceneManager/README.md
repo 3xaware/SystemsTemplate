@@ -25,20 +25,20 @@ Sistema para cargar y cambiar escenas de Godot con soporte opcional para transic
   ```gdscript
   var bg: Texture2D = load("res://UI/FadeTexture.png")
   $SceneManager.change_scene(
-          "res://Scenes/Level1.tscn",
-          use_transition = true,
-          fade_out_time = 0.6,
-          fade_in_time = 0.4,
-          custom_background = bg
+		  "res://Scenes/Level1.tscn",
+		  use_transition = true,
+		  fade_out_time = 0.6,
+		  fade_in_time = 0.4,
+		  custom_background = bg
   )
   ```
 - **Responder al evento de carga**
   ```gdscript
   func _ready():
-          $SceneManager.scene_loaded.connect(_on_scene_loaded)
+		  $SceneManager.scene_loaded.connect(_on_scene_loaded)
 
   func _on_scene_loaded(scene: Node) -> void:
-          print("Nueva escena lista: ", scene.name)
+		  print("Nueva escena lista: ", scene.name)
   ```
 
 ## Flujo interno
@@ -82,20 +82,20 @@ System to load and swap Godot scenes with optional fade transitions and input bl
   ```gdscript
   var bg: Texture2D = load("res://UI/FadeTexture.png")
   $SceneManager.change_scene(
-          "res://Scenes/Level1.tscn",
-          use_transition = true,
-          fade_out_time = 0.6,
-          fade_in_time = 0.4,
-          custom_background = bg
+		  "res://Scenes/Level1.tscn",
+		  use_transition = true,
+		  fade_out_time = 0.6,
+		  fade_in_time = 0.4,
+		  custom_background = bg
   )
   ```
 - **React to the load event**
   ```gdscript
   func _ready():
-          $SceneManager.scene_loaded.connect(_on_scene_loaded)
+		  $SceneManager.scene_loaded.connect(_on_scene_loaded)
 
   func _on_scene_loaded(scene: Node) -> void:
-          print("New scene ready: ", scene.name)
+		  print("New scene ready: ", scene.name)
   ```
 
 ## Internal flow

@@ -18,11 +18,11 @@ func _initialize_slots() -> void:
 		slots[i] = null
 
 func _load_database() -> bool:
-        if not Engine.has_singleton("ItemDataBase"):
-                push_error("Inventory ERROR: ItemDataBase autoload is missing! Add it in Project > Autoloads.")
-                return false
+		if not Engine.has_singleton("ItemDataBase"):
+				push_error("Inventory ERROR: ItemDataBase autoload is missing! Add it in Project > Autoloads.")
+				return false
 
-        return true
+		return true
 
 func add_item(item: ItemData, amount: int = 1) -> void:
 	for i: int in range(max_slots):
@@ -69,19 +69,19 @@ func get_inventory_data() -> Array[Dictionary]:
 	return data
 
 func load_inventory(data: Array[Dictionary]) -> void:
-        _initialize_slots()
+		_initialize_slots()
 
-        if not _load_database():
-                return
+		if not _load_database():
+				return
 
-        for entry: Dictionary in data:
-                var item_id: String = entry.get("item_id", "")
-                var amount: int = int(entry.get("quantity", 1))
+		for entry: Dictionary in data:
+				var item_id: String = entry.get("item_id", "")
+				var amount: int = int(entry.get("quantity", 1))
 
-                var item: ItemData = ItemDataBase.get_item(item_id)
-                if item != null:
-                        add_item(item, amount)
-                else:
-                        push_warning("Inventory WARNING: Item ID '%s' not found in ItemDataBase." % item_id)
+				var item: ItemData = ItemDataBase.get_item(item_id)
+				if item != null:
+						add_item(item, amount)
+				else:
+						push_warning("Inventory WARNING: Item ID '%s' not found in ItemDataBase." % item_id)
 
-        emit_signal("inventory_updated", slots)
+		emit_signal("inventory_updated", slots)
