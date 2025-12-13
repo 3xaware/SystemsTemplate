@@ -35,7 +35,7 @@ Sistema para cargar y cambiar escenas de Godot con soporte opcional para transic
 - **Responder al evento de carga**
   ```gdscript
   func _ready():
-                  EventBus.scene_loaded.connect(_on_scene_loaded)
+				  EventBus.scene_loaded.connect(_on_scene_loaded)
 
   func _on_scene_loaded(scene: Node) -> void:
 		  print("Nueva escena lista: ", scene.name)
@@ -92,7 +92,7 @@ System to load and swap Godot scenes with optional fade transitions and input bl
 - **React to the load event**
   ```gdscript
   func _ready():
-                  EventBus.scene_loaded.connect(_on_scene_loaded)
+				  EventBus.scene_loaded.connect(_on_scene_loaded)
 
   func _on_scene_loaded(scene: Node) -> void:
 		  print("New scene ready: ", scene.name)

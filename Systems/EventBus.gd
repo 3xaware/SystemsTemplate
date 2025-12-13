@@ -1,5 +1,4 @@
 extends Node
-class_name EventBus
 
 # Shared signals for cross-system communication
 signal inventory_updated(slots: Array[ItemStack])
