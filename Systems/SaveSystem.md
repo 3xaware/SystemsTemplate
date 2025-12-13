@@ -1,4 +1,4 @@
-# Sistema de guardado (SaveSystem)
+# Sistema de guardado (Español)
 
 El `SaveSystem.gd` es un nodo utilitario que centraliza la carga/creación, guardado y borrado de partidas usando recursos `SaveData` en la carpeta `user://saves/`.
 

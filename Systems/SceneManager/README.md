@@ -1,4 +1,4 @@
-# SceneManager (español)
+# SceneManager (Español)
 
 Sistema para cargar y cambiar escenas de Godot con soporte opcional para transiciones de fundido y bloqueo de entrada mientras se realiza el cambio.
 

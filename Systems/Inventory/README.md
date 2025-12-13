@@ -1,4 +1,4 @@
-# Sistema de inventario
+# Sistema de inventario (Español)
 
 Permite almacenar `ItemStack` apilables en un número fijo de ranuras y emite una señal cuando cambia el contenido.
 

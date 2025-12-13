@@ -1,4 +1,4 @@
-# Sistema de interacción
+# Sistema de interacción (Español)
 
 Permite gestionar acciones contextuales con objetos cercanos mediante áreas de detección.
 

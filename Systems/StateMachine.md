@@ -1,4 +1,4 @@
-# Máquina de estados
+# Máquina de estados (Español)
 
 Implementa un flujo simple de estados para nodos, con transición explícita por nombre.
 

@@ -1,4 +1,4 @@
-# Sistemas base del proyecto
+# Sistemas base del proyecto (Español)
 
 Este directorio contiene plantillas reutilizables para sistemas habituales en Godot. Cada sección resume el propósito de los archivos y enlaza a instrucciones más detalladas en los subdirectorios correspondientes.
 
