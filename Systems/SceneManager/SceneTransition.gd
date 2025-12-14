@@ -1,5 +1,4 @@
 extends CanvasLayer
-class_name SceneTransition
 
 @onready var rect: ColorRect = $ColorRect
 
