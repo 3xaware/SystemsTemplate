@@ -22,7 +22,7 @@ EventBus="*res://Systems/EventBus.gd"
 GameFlow="*res://Systems/GameFlow.gd"
 SaveSystem="*res://Systems/SaveSystem.gd"
 SceneTransition="*res://Systems/SceneManager/SceneTransition.tscn"
-AudioManager="*res://Systems/AudioManager/AudioManager.gd"
+AudioManager="*res://Systems/AudioManager/AudioManager.tscn"
 
 [rendering]
 

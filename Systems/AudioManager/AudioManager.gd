@@ -1,10 +1,9 @@
 extends Node
 
-var _backend: AudioBackend
+# Existe un AudioManager.tscn que contiene 2 nodos, uno sera el AudioManager (Node) al que se le pegara este script, y tendra como hijo un GodotAudioBackend (Node) Con GodotAudioBackend.gd asignado (Esto ya esta en el proyecto) y es el nodo al que hace referencia esta variable _backend (Ahi en el GodotAudioBackend se arrastran los archivos de audio)
+@onready var _backend: AudioBackend = $GodotAudioBackend
 
 func _ready() -> void:
-	_backend = GodotAudioBackend.new()
-	add_child(_backend)
 	GameFlow.state_changed.connect(_on_game_state_changed)
 
 # =========================
@@ -19,7 +18,6 @@ func stop_music() -> void:
 
 func play_sfx(id: String) -> void:
 	_backend.play_sfx(id)
-
 
 func play_ui(id: String) -> void:
 	_backend.play_ui(id)

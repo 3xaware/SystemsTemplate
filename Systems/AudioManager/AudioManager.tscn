@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bygiivh1lj7w3"]
+
+[ext_resource type="Script" uid="uid://fxcib6ypvvue" path="res://Systems/AudioManager/AudioManager.gd" id="1_mca51"]
+[ext_resource type="Script" uid="uid://brombu8bdaoq0" path="res://Systems/AudioManager/GodotAudioBackend.gd" id="2_boadu"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_mca51")
+
+[node name="GodotAudioBackend" type="Node" parent="."]
+script = ExtResource("2_boadu")
