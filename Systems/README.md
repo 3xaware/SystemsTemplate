@@ -10,6 +10,14 @@ Este directorio contiene plantillas reutilizables para sistemas habituales en Go
 - **SceneManager**: Cambio de escenas con transiciones opcionales y bloqueo de entrada. Ver [SceneManager/README.md](SceneManager/README.md).
 - **GameFlow**: Autoload que centraliza el estado global del juego y notifica cambios con la señal `state_changed`. Ver [GameFlow.md](GameFlow.md).
 - **EventBus**: Autoload para comunicación desacoplada mediante señales compartidas entre sistemas. Ver [EventBus.md](EventBus.md).
+- **AudioManager**: Reproducción centralizada de música, SFX y audio de UI mediante un backend configurable. Ver [AudioManager/README.md](AudioManager/README.md).
+
+## Configuración general recomendada
+1. **Autoloads base**: registra `Systems/EventBus.gd`, `Systems/GameFlow.gd`, `Systems/SceneManager/SceneManager.gd`, `Systems/AudioManager/AudioManager.tscn` y `Systems/SaveSystem.gd` en *Proyecto ▸ Configuración del proyecto ▸ AutoLoad* para que los sistemas estén siempre disponibles.
+2. **Transiciones e input**: añade `Systems/SceneManager/SceneTransition.tscn` y `Systems/SceneManager/InputBlocker.gd` como autoloads si usarás fundidos al cambiar de escena.
+3. **Buses de audio**: crea en el *Audio Bus Layout* los buses `Music`, `SFX` y `UI` como hijos de `Master` para que el `AudioManager` pueda enrutar el audio.
+4. **Señales globales**: conecta los sistemas a `EventBus` según su documentación (por ejemplo, `SceneManager` emite `scene_loaded` y `GameFlow` expone `state_changed`) para mantener el acoplamiento desacoplado.
+5. **Datos persistentes**: si usas guardado, inicializa `SaveSystem` al arrancar y conecta tu HUD o sistemas interesados a las señales `save_loaded` y `save_saved` del `EventBus`.
 
 ---
 
@@ -25,3 +33,11 @@ This directory includes reusable templates for common Godot systems. Each bullet
 - **SceneManager**: Scene swapping with optional transitions and input blocking. See [SceneManager/README.md](SceneManager/README.md).
 - **GameFlow**: Autoload that centralizes the global game state and notifies changes through the `state_changed` signal. See [GameFlow.md](GameFlow.md).
 - **EventBus**: Autoload for decoupled communication through shared signals between systems. See [EventBus.md](EventBus.md).
+- **AudioManager**: Centralized playback for music, SFX, and UI audio through a configurable backend. See [AudioManager/README.md](AudioManager/README.md).
+
+## Recommended project-wide setup
+1. **Core autoloads**: register `Systems/EventBus.gd`, `Systems/GameFlow.gd`, `Systems/SceneManager/SceneManager.gd`, `Systems/AudioManager/AudioManager.tscn`, and `Systems/SaveSystem.gd` under *Project ▸ Project Settings ▸ AutoLoad* so the systems are always available.
+2. **Transitions and input**: add `Systems/SceneManager/SceneTransition.tscn` and `Systems/SceneManager/InputBlocker.gd` as autoloads if you plan to use fades during scene changes.
+3. **Audio buses**: create `Music`, `SFX`, and `UI` buses under `Master` in the *Audio Bus Layout* so `AudioManager` can route audio properly.
+4. **Global signals**: wire systems to `EventBus` as documented (for example, `SceneManager` emits `scene_loaded` and `GameFlow` exposes `state_changed`) to keep communication decoupled.
+5. **Persistence**: if you use saving, initialize `SaveSystem` on startup and hook your HUD or interested systems to the `save_loaded` and `save_saved` signals on the `EventBus`.
