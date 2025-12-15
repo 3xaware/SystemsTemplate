@@ -3,9 +3,9 @@ class_name StateMachine
 
 var machine_initialized: bool = false
 var flag: bool = false
-var states : Dictionary = {}
-var current_state : State
-@export var initial_state : State
+var states: Dictionary = {}
+var current_state: State
+@export var initial_state: State
 
 func init(parent: Node) -> void:
 	if !parent:
@@ -28,12 +28,12 @@ func init(parent: Node) -> void:
 		print(self.name, ": State Machine succesfully initialized")
 		machine_initialized = true
 	
-func change_state(source_state : State, new_state_name : String)  -> void:
+func change_state(source_state: State, new_state_name: String)  -> void:
 	if source_state != current_state:
 		print("Invalid change_state from: " + source_state.name + " but currently in: " + current_state.name)
 		return
 		
-	var new_state : State = states.get(new_state_name.to_lower())
+	var new_state: State = states.get(new_state_name.to_lower())
 	if !new_state:
 		print("StateMachine: State " + new_state_name + " does not exist")
 		return

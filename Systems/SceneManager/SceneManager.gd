@@ -4,7 +4,6 @@ class_name SceneManager
 var current_scene: Node = null
 var transition: SceneTransition
 
-
 func _ready() -> void:
 	var t := get_node_or_null("/root/SceneTransition")
 	if t is SceneTransition:
@@ -22,6 +21,7 @@ func change_scene(
 
 	if use_transition and transition != null:
 		await transition.fade_out(fade_out_time, custom_background)
+		InputBlocker.block_input()
 
 	if current_scene != null:
 		current_scene.queue_free()
@@ -43,3 +43,5 @@ func change_scene(
 	if use_transition and transition != null:
 		await get_tree().process_frame
 		await transition.fade_in(fade_in_time)
+	
+	InputBlocker.unblock_input()

@@ -16,5 +16,5 @@ func OnInput(_event: InputEvent) -> void:
 func Update(_delta : float) -> void:
 	pass
 	
-func Physics_Update(_delta : float) -> void:
+func Physics_Update(_delta: float) -> void:
 	pass
