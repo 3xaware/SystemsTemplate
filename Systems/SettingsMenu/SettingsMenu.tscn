@@ -1,25 +1,31 @@
-[gd_scene format=3 load_steps=3]
+[gd_scene load_steps=3 format=3 uid="uid://bih62edx2vxfa"]
 
-[ext_resource type="Script" path="res://Settings/VideoSettings.gd" id="1"]
-[ext_resource type="Script" path="res://Settings/AudioSettings.gd" id="2"]
+[ext_resource type="Script" uid="uid://c63hha5vf3tkx" path="res://Systems/SettingsMenu/VideoSettings.gd" id="1"]
+[ext_resource type="Script" uid="uid://cfry76qje16di" path="res://Systems/SettingsMenu/AudioSettings.gd" id="2"]
 
 [node name="SettingsMenu" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="TabContainer" type="TabContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="Video" type="Control" parent="TabContainer"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-tab_title = "Video"
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+current_tab = 0
+
+[node name="Video" type="Control" parent="TabContainer" node_paths=PackedStringArray("_resolution_option", "_fullscreen_toggle")]
+layout_mode = 2
 script = ExtResource("1")
+_resolution_option = NodePath("MarginContainer/VBoxContainer/ResolutionOption")
+_fullscreen_toggle = NodePath("MarginContainer/VBoxContainer/FullscreenToggle")
+metadata/_tab_index = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Video"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 16.0
@@ -28,29 +34,32 @@ offset_right = -16.0
 offset_bottom = -16.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Video/MarginContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
+layout_mode = 2
 
 [node name="ResolutionLabel" type="Label" parent="TabContainer/Video/MarginContainer/VBoxContainer"]
+layout_mode = 2
 text = "Resolución"
 
 [node name="ResolutionOption" type="OptionButton" parent="TabContainer/Video/MarginContainer/VBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="FullscreenToggle" type="CheckButton" parent="TabContainer/Video/MarginContainer/VBoxContainer"]
+layout_mode = 2
 text = "Pantalla completa"
 
-[node name="Audio" type="Control" parent="TabContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-tab_title = "Audio"
+[node name="Audio" type="Control" parent="TabContainer" node_paths=PackedStringArray("_master_slider", "_music_slider", "_sfx_slider", "_ui_slider")]
+visible = false
+layout_mode = 2
 script = ExtResource("2")
+_master_slider = NodePath("MarginContainer/VBoxContainer/Master/MasterSlider")
+_music_slider = NodePath("MarginContainer/VBoxContainer/Music/MusicSlider")
+_sfx_slider = NodePath("MarginContainer/VBoxContainer/SFX/SFXSlider")
+_ui_slider = NodePath("MarginContainer/VBoxContainer/UI/UISlider")
+metadata/_tab_index = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Audio"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 16.0
@@ -59,55 +68,60 @@ offset_right = -16.0
 offset_bottom = -16.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio/MarginContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
+layout_mode = 2
 
 [node name="Master" type="HBoxContainer" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer/Master"]
+layout_mode = 2
 text = "Master"
 
 [node name="MasterSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/VBoxContainer/Master"]
-min_value = 0.0
+layout_mode = 2
+size_flags_horizontal = 3
 max_value = 1.0
 step = 0.01
-size_flags_horizontal = 3
 
 [node name="Music" type="HBoxContainer" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer/Music"]
+layout_mode = 2
 text = "Música"
 
 [node name="MusicSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/VBoxContainer/Music"]
-min_value = 0.0
+layout_mode = 2
+size_flags_horizontal = 3
 max_value = 1.0
 step = 0.01
-size_flags_horizontal = 3
 
 [node name="SFX" type="HBoxContainer" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer/SFX"]
+layout_mode = 2
 text = "SFX"
 
 [node name="SFXSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/VBoxContainer/SFX"]
-min_value = 0.0
+layout_mode = 2
+size_flags_horizontal = 3
 max_value = 1.0
 step = 0.01
-size_flags_horizontal = 3
 
 [node name="UI" type="HBoxContainer" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer/UI"]
+layout_mode = 2
 text = "UI"
 
 [node name="UISlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/VBoxContainer/UI"]
-min_value = 0.0
+layout_mode = 2
+size_flags_horizontal = 3
 max_value = 1.0
 step = 0.01
-size_flags_horizontal = 3

@@ -18,6 +18,14 @@ Incluye los puntos de entrada públicos (`play_music`, `play_sfx`, `play_ui`, et
 2. **Configura los Audio Buses**:
    - En el *Audio Bus Layout* crea (o verifica) los buses `Music`, `SFX` y `UI` como hijos de `Master`.
    - Ajusta los efectos o rutas según tu mezcla; el backend escribe en esos buses y controla su volumen.
+   **Nota importante**  
+   Crear un Audio Bus Layout no es suficiente: el layout debe estar **asignado como activo** para que el motor lo use en runtime.
+
+   Para hacerlo:
+   1. Abre *Proyecto ▸ Configuración del proyecto*.
+   2. Ve a *Audio ▸ Buses*.
+   3. En el campo **Bus Layout**, selecciona explícitamente tu archivo de layout (por ejemplo `audio_bus.tres`).
+   4. Guarda el proyecto y reinicia el editor para asegurar que los buses estén disponibles en ejecución.
 3. **Instancia `GameFlow` si se usa pausa automática**:
    - El `AudioManager` escucha `GameFlow.state_changed` para pausar/reanudar música y efectos durante `PAUSED`/`GAMEPLAY`.
    - Si no usas `GameFlow`, puedes eliminar la conexión en `_ready` o implementar señales equivalentes.
@@ -82,6 +90,14 @@ Godot audio buses.
 2. **Configure Audio Buses**:
    - In the *Audio Bus Layout* create (or verify) the `Music`, `SFX`, and `UI` buses under `Master`.
    - Tweak effects or routing as needed; the backend writes to these buses and controls their volumes.
+   **Important note**  
+   Creating an Audio Bus Layout is not enough: the layout must be **explicitly assigned** to be used at runtime.
+
+   To do this:
+   1. Open *Project ▸ Project Settings*.
+   2. Go to *Audio ▸ Buses*.
+   3. In the **Bus Layout** field, explicitly select your layout file (for example `audio_bus.tres`).
+   4. Save the project and restart the editor to ensure the buses are active at runtime.
 3. **Instantiate `GameFlow` if you want automatic pause handling**:
    - `AudioManager` listens to `GameFlow.state_changed` to pause/resume music and SFX on `PAUSED`/`GAMEPLAY`.
    - If you do not use `GameFlow`, remove the connection in `_ready` or emit equivalent signals.
