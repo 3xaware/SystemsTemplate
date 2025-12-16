@@ -1,22 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bygiivh1lj7w3"]
+[gd_scene load_steps=3 format=3 uid="uid://bygiivh1lj7w3"]
 
 [ext_resource type="Script" uid="uid://fxcib6ypvvue" path="res://Systems/AudioManager/AudioManager.gd" id="1_mca51"]
 [ext_resource type="Script" uid="uid://brombu8bdaoq0" path="res://Systems/AudioManager/GodotAudioBackend.gd" id="2_boadu"]
-[ext_resource type="AudioStream" uid="uid://cbdj7pmvhsf7a" path="res://Audio/music_sound_1.wav" id="3_0uacl"]
-[ext_resource type="AudioStream" uid="uid://ba32sbmiq5wdp" path="res://Audio/sfx_sound_1.wav" id="4_44i7q"]
-[ext_resource type="AudioStream" uid="uid://ni1h5wcm8aj4" path="res://Audio/ui_sound.wav" id="5_68ho3"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_mca51")
 
 [node name="GodotAudioBackend" type="Node" parent="."]
 script = ExtResource("2_boadu")
-music_library = Dictionary[String, AudioStream]({
-"music_sound": ExtResource("3_0uacl")
-})
-sfx_library = Dictionary[String, AudioStream]({
-"sfx_sound": ExtResource("4_44i7q")
-})
-ui_library = Dictionary[String, AudioStream]({
-"ui_sound": ExtResource("5_68ho3")
-})

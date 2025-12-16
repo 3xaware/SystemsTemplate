@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 
 [audio]
 
-buses/default_bus_layout="uid://bdxurnsk8nmut"
+buses/default_bus_layout="uid://dcx73faxxvb3v"
 
 [autoload]
 
@@ -24,7 +24,7 @@ ItemDataBase="*res://Systems/Inventory/ItemDataBase.gd"
 InputBlocker="*res://Systems/SceneManager/InputBlocker.gd"
 EventBus="*res://Systems/EventBus.gd"
 GameFlow="*res://Systems/GameFlow.gd"
-SaveSystem="*res://Systems/SaveSystem.gd"
+SaveSystem="*res://Systems/SaveSystem/SaveSystem.gd"
 SceneTransition="*res://Systems/SceneManager/SceneTransition.tscn"
 AudioManager="*res://Systems/AudioManager/AudioManager.tscn"
 

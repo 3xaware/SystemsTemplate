@@ -14,7 +14,7 @@ Incluye los puntos de entrada públicos (`play_music`, `play_sfx`, `play_ui`, et
 ## Pasos para integrarlo en un proyecto
 1. **Añade la escena como autoload**:
    - Abre *Proyecto ▸ Configuración del proyecto ▸ AutoLoad*.
-   - Selecciona `Systems/AudioManager/AudioManager.tscn`, usa el nombre `AudioManager` y presiona *Agregar*.
+   - Selecciona `AudioManager.tscn`, usa el nombre `AudioManager` y presiona *Agregar*.
 2. **Configura los Audio Buses**:
    - En el *Audio Bus Layout* crea (o verifica) los buses `Music`, `SFX` y `UI` como hijos de `Master`.
    - Ajusta los efectos o rutas según tu mezcla; el backend escribe en esos buses y controla su volumen.
@@ -86,7 +86,7 @@ Godot audio buses.
 ## Steps to add it to a project
 1. **Add the scene as an autoload**:
    - Open *Project ▸ Project Settings ▸ AutoLoad*.
-   - Select `Systems/AudioManager/AudioManager.tscn`, set the name to `AudioManager`, and click *Add*.
+   - Select `AudioManager.tscn`, set the name to `AudioManager`, and click *Add*.
 2. **Configure Audio Buses**:
    - In the *Audio Bus Layout* create (or verify) the `Music`, `SFX`, and `UI` buses under `Master`.
    - Tweak effects or routing as needed; the backend writes to these buses and controls their volumes.

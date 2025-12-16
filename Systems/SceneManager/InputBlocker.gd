@@ -8,6 +8,6 @@ func block_input() -> void:
 func unblock_input() -> void:
 	blocked = false
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if blocked:
 		get_tree().set_input_as_handled()
