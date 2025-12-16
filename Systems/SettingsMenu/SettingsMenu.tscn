@@ -69,13 +69,17 @@ size_flags_horizontal = 3
 [node name="FullscreenToggle" type="CheckButton" parent="TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 
-[node name="Audio" type="Control" parent="TabContainer" node_paths=PackedStringArray("_master_slider", "_music_slider", "_sfx_slider", "_ui_slider")]
+[node name="Audio" type="Control" parent="TabContainer" node_paths=PackedStringArray("_master_slider", "_music_slider", "_sfx_slider", "_ui_slider", "_master_value_label", "_music_value_label", "_sfx_value_label", "_ui_value_label")]
 layout_mode = 2
 script = ExtResource("2")
 _master_slider = NodePath("MarginContainer/VBoxContainer/Master/MasterSlider")
 _music_slider = NodePath("MarginContainer/VBoxContainer/Music/MusicSlider")
 _sfx_slider = NodePath("MarginContainer/VBoxContainer/SFX/SFXSlider")
 _ui_slider = NodePath("MarginContainer/VBoxContainer/UI/UISlider")
+_master_value_label = NodePath("MarginContainer/VBoxContainer/Master/MasterValue")
+_music_value_label = NodePath("MarginContainer/VBoxContainer/Music/MusicValue")
+_sfx_value_label = NodePath("MarginContainer/VBoxContainer/SFX/SFXValue")
+_ui_value_label = NodePath("MarginContainer/VBoxContainer/UI/UIValue")
 metadata/_tab_index = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Audio"]
@@ -113,6 +117,12 @@ tick_count = 11
 ticks_on_borders = true
 ticks_position = 2
 
+[node name="MasterValue" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer/Master"]
+layout_mode = 2
+custom_minimum_size = Vector2(45, 0)
+size_flags_horizontal = 8
+horizontal_alignment = 2
+
 [node name="Music" type="HBoxContainer" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -130,6 +140,12 @@ max_value = 1.0
 tick_count = 11
 ticks_on_borders = true
 ticks_position = 2
+
+[node name="MusicValue" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer/Music"]
+layout_mode = 2
+custom_minimum_size = Vector2(45, 0)
+size_flags_horizontal = 8
+horizontal_alignment = 2
 
 [node name="SFX" type="HBoxContainer" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -149,6 +165,12 @@ tick_count = 11
 ticks_on_borders = true
 ticks_position = 2
 
+[node name="SFXValue" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer/SFX"]
+layout_mode = 2
+custom_minimum_size = Vector2(45, 0)
+size_flags_horizontal = 8
+horizontal_alignment = 2
+
 [node name="UI" type="HBoxContainer" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -166,3 +188,9 @@ max_value = 1.0
 tick_count = 11
 ticks_on_borders = true
 ticks_position = 2
+
+[node name="UIValue" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer/UI"]
+layout_mode = 2
+custom_minimum_size = Vector2(45, 0)
+size_flags_horizontal = 8
+horizontal_alignment = 2
