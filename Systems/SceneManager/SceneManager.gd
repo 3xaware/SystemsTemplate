@@ -35,10 +35,11 @@ func change_scene(
 	current_scene = packed.instantiate()
 	get_tree().root.add_child(current_scene)
 
-	if Engine.has_singleton("EventBus"):
-		EventBus.emit_signal("scene_loaded", current_scene)
-	else:
-		push_warning("SceneManager: EventBus autoload is missing; scene change events will not be broadcast globally.")
+        var bus: Node = get_node_or_null("/root/EventBus")
+        if bus != null:
+                bus.emit_signal("scene_loaded", current_scene)
+        else:
+                push_warning("SceneManager: EventBus autoload is missing; scene change events will not be broadcast globally.")
 
 	if use_transition and transition != null:
 		await get_tree().process_frame

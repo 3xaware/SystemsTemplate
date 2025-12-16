@@ -16,17 +16,19 @@ func _initialize_slots() -> void:
 		slots[i] = null
 
 func _load_database() -> bool:
-	if not Engine.has_singleton("ItemDataBase"):
-		push_error("Inventory ERROR: ItemDataBase autoload is missing! Add it in Project > Autoloads.")
-		return false
+        var item_database: Node = get_node_or_null("/root/ItemDataBase")
+        if item_database == null:
+                push_error("Inventory ERROR: ItemDataBase autoload is missing! Add it in Project > Autoloads.")
+                return false
 
 	return true
 
 func _broadcast_inventory_updated() -> void:
-	if Engine.has_singleton("EventBus"):
-		EventBus.emit_signal("inventory_updated", slots)
-	else:
-		push_warning("Inventory: EventBus autoload is missing; global inventory updates will not be broadcast.")
+        var bus: Node = get_node_or_null("/root/EventBus")
+        if bus != null:
+                bus.emit_signal("inventory_updated", slots)
+        else:
+                push_warning("Inventory: EventBus autoload is missing; global inventory updates will not be broadcast.")
 
 func add_item(item: ItemData, amount: int = 1) -> void:
 	for i: int in range(max_slots):
