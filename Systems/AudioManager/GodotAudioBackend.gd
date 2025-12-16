@@ -1,9 +1,9 @@
 extends AudioBackend
 class_name GodotAudioBackend
 
-@export var music_library: Dictionary = {}
-@export var sfx_library: Dictionary = {}
-@export var ui_library: Dictionary = {}
+@export var music_library: Dictionary[String, AudioStream] = {}
+@export var sfx_library: Dictionary[String, AudioStream] = {}
+@export var ui_library: Dictionary[String, AudioStream] = {}
 @export var sfx_pool_size: int = 8
 
 # ============================================================
@@ -13,8 +13,7 @@ class_name GodotAudioBackend
 var _music_player: AudioStreamPlayer
 var _sfx_players: Array[AudioStreamPlayer] = []
 var _ui_player: AudioStreamPlayer
-var _sfx_last_used: Dictionary = {}
-
+var _sfx_last_used: Dictionary[AudioStreamPlayer, int] = {}
 
 func _ready() -> void:
 	_music_player = AudioStreamPlayer.new()
