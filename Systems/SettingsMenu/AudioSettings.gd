@@ -30,7 +30,7 @@ func _connect_signals() -> void:
 	_ui_slider.value_changed.connect(_on_ui_volume_changed)
 
 func _on_master_volume_changed(value: float) -> void:
-	_apply_volume(AudioManager.set_master_volume, value)
+        _apply_volume(AudioManager.set_master_volume, value)
 
 func _on_music_volume_changed(value: float) -> void:
 	_apply_volume(AudioManager.set_music_volume, value)
@@ -39,13 +39,14 @@ func _on_sfx_volume_changed(value: float) -> void:
 	_apply_volume(AudioManager.set_sfx_volume, value)
 
 func _on_ui_volume_changed(value: float) -> void:
-	_apply_volume(AudioManager.set_ui_volume, value)
+        _apply_volume(AudioManager.set_ui_volume, value)
 
 func _apply_volume(setter: Callable, value: float) -> void:
-	if has_node("/root/AudioManager"):
-		setter.call(value)
-	else:
-		push_warning("AudioManager autoload not found; volume change skipped.")
+        if has_node("/root/AudioManager"):
+                setter.call(value)
+                AudioManager.play_ui("ui_sound")
+        else:
+                push_warning("AudioManager autoload not found; volume change skipped.")
 
 func _get_bus_volume(bus_name: String) -> float:
 	var bus := AudioServer.get_bus_index(bus_name)
