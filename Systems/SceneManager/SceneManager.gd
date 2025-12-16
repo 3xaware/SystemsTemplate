@@ -12,12 +12,12 @@ func _ready() -> void:
 		push_warning("SceneManager: No SceneTransition found. Transitions disabled.")
 
 func change_scene(
-		scene_path: String,
-		use_transition: bool = false,
-		fade_out_time: float = 0.8,
-		fade_in_time: float = 0.8,
-		custom_background: Texture2D = null
-	) -> void:
+	scene_path: String,
+	use_transition: bool = false,
+	fade_out_time: float = 0.8,
+	fade_in_time: float = 0.8,
+	custom_background: Texture2D = null
+) -> void:
 
 	if use_transition and transition != null:
 		await transition.fade_out(fade_out_time, custom_background)
@@ -35,11 +35,11 @@ func change_scene(
 	current_scene = packed.instantiate()
 	get_tree().root.add_child(current_scene)
 
-        var bus: Node = get_node_or_null("/root/EventBus")
-        if bus != null:
-                bus.emit_signal("scene_loaded", current_scene)
-        else:
-                push_warning("SceneManager: EventBus autoload is missing; scene change events will not be broadcast globally.")
+	var bus: Node = get_node_or_null("/root/EventBus")
+	if bus != null:
+		bus.emit_signal("scene_loaded", current_scene)
+	else:
+		push_warning("SceneManager: EventBus autoload is missing; scene change events will not be broadcast globally.")
 
 	if use_transition and transition != null:
 		await get_tree().process_frame

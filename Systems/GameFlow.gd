@@ -13,12 +13,12 @@ signal state_changed(previous: GameFlow.State, current: GameFlow.State)
 var current_state: GameFlow.State = GameFlow.State.BOOT
 
 func _ready() -> void:
-        _set_state(GameFlow.State.BOOT)
-        var bus: Node = get_node_or_null("/root/EventBus")
-        if bus != null:
-                bus.save_loaded.connect(_on_save_loaded)
-        else:
-                push_warning("GameFlow: EventBus autoload is missing; save_loaded will not update the game state.")
+	_set_state(GameFlow.State.BOOT)
+	var bus: Node = get_node_or_null("/root/EventBus")
+	if bus != null:
+		bus.save_loaded.connect(_on_save_loaded)
+	else:
+		push_warning("GameFlow: EventBus autoload is missing; save_loaded will not update the game state.")
 
 # ============================================================
 #  PUBLIC API
